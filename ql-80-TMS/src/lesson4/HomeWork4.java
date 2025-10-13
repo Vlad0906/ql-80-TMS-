@@ -176,10 +176,10 @@ public class HomeWork4 {
         boolean examination = true;
         int[] array = new int[sizeArray];
 
-        System.out.println("Fill the array with values from zero to nine: ");
+        System.out.println("Fill the array with values from zero to nine, the first value must not be equal to zero: ");
         for (int i = 0; i < array.length; i++) {
             array[i] = scan.nextInt();
-            while (array[i] >= 10 || array[i] < 0){
+            while (array[i] >= 10 || array[i] < 0 || array[0] == 0){
                 System.out.print("You entered an incorrect number. Enter again: ");
                 array[i] = scan.nextInt();
             }
