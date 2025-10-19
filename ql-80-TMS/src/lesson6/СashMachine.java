@@ -54,23 +54,26 @@ public class СashMachine {
         int quantityFifty = 0;
         int quantityTwenty = 0;
 
-        balance += banknote;
+        if(banknote > 0){
+            balance += banknote;
 
-        quantityOneHundred = banknote / ONEHUNDREDBILL;
-        int remainder = banknote % ONEHUNDREDBILL;
+            quantityOneHundred = banknote / ONEHUNDREDBILL;
+            int remainder = banknote % ONEHUNDREDBILL;
 
-        if((remainder % TWENTYBILL) == 0){
-            quantityTwenty = remainder / TWENTYBILL;
+            if((remainder % TWENTYBILL) == 0){
+                quantityTwenty = remainder / TWENTYBILL;
+            } else {
+                quantityFifty = remainder / FIFTYBILL;
+                int residue = remainder % FIFTYBILL;
+                quantityTwenty = residue / TWENTYBILL;
+            }
+
+            quantityOneHundredBill += quantityOneHundred;
+            quantityFiftyBill += quantityFifty;
+            quantityTwentyBill += quantityTwenty;
         } else {
-            quantityFifty = remainder / FIFTYBILL;
-            int residue = remainder % FIFTYBILL;
-            quantityTwenty = residue / TWENTYBILL;
+            System.out.println("You cannot deposit funds below zero.");
         }
-
-        quantityOneHundredBill += quantityOneHundred;
-        quantityFiftyBill += quantityFifty;
-        quantityTwentyBill += quantityTwenty;
-
         return balance;
     }
 
