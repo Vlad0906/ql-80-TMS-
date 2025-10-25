@@ -8,8 +8,7 @@ public class Poodle{
 способа
      */
 
-    public static void main(String[] args) throws Exception {
-        Poodle poodle = new Poodle();
+    public static void main(String[] args) {
         Dog.eat();
         Dog.voice();
 
