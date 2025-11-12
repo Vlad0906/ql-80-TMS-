@@ -23,7 +23,7 @@ public class Abbreviation {
     }
 
     public static void findAnAbbreviation(String text){
-        Pattern pattern = Pattern.compile("\\b[A-Z]{2,6}\\b");
+        Pattern pattern = Pattern.compile("\\b([A-ZА-Я]{2,6})\\b", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()){
