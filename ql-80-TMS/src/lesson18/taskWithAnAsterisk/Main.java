@@ -27,20 +27,19 @@ public class Main {
         mapp.put(13, "Igor");
         mapp.put(14, "Vadim");
 
-        //создаю новую карту из первоначального Map
+        //newMap - создаю новую карту из первоначального Map
+        //1) filter - прохожу фильтрами по числовому диапазону 1/2/5/8/9/13
+        //2) filter - нахожу значения, которые имеют нечетное количествобукв в имени
+        //collect(Collectors.toMap - собираю результат в новую карту
+        //ключом является оригинальное имя
+        //значением является перевернутое имя
         Map<String, String> newMap = mapp.entrySet().stream().
-                //прохожу фильтрами по числовому диапазону 1/2/5/8/9/13
-                filter(entry -> entry.getKey() == 1 || entry.getKey() == 2 ||
-                        entry.getKey() == 5 || entry.getKey() == 8 ||
-                        entry.getKey() == 9 || entry.getKey() == 13).
-                //нахожу значения, которые имеют нечетное количествобукв в имени
-                filter(entry -> (entry.getValue().length() % 2) != 0).
-                //собираю результат в новую карту
-                collect(Collectors.toMap(
-                        //ключом является оригинальное имя
-                        entry -> entry.getValue(),
-                        //значением является перевернутое имя
-                        entry -> new StringBuilder(entry.getValue()).reverse().toString()));
+        filter(entry -> entry.getKey() == 1 || entry.getKey() == 2 ||
+        entry.getKey() == 5 || entry.getKey() == 8 || entry.getKey() == 9 || entry.getKey() == 13).
+        filter(entry -> (entry.getValue().length() % 2) != 0).
+        collect(Collectors.toMap(
+        entry -> entry.getValue(),
+        entry -> new StringBuilder(entry.getValue()).reverse().toString()));
 
         List<String> names = new ArrayList<>(newMap.values());
         System.out.println(names);
