@@ -9,6 +9,10 @@ public class Main {
      */
 
     public static void main(String[] args) {
+        produceAndBuyGoods();
+    }
+
+    public static void produceAndBuyGoods(){
         Shop shop = new Shop();
 
         // Поток producer производит 5 товаров и используется метод sleep для имитации работы
