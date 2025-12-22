@@ -30,6 +30,8 @@ public class CalculatorHttpHandler implements HttpHandler {
         exchange.sendResponseHeaders(200, result.length());
         try (OutputStream os = exchange.getResponseBody()) {
             os.write(result.getBytes());
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
     }
 }
